@@ -5,19 +5,7 @@ export default function Home() {
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <div>
-          <p className="text-2xl sm:text-3xl font-semibold">
-            Welcome to{" "}
-            <a
-              className="text-foreground font-bold underline underline-offset-4 decoration-foreground/30"
-              href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Next.js 14
-            </a>
-            !
-          </p>
-          <p className="text-2xl sm:text-3xl font-semibold">with Tailwind CSS</p>
+          <p>こんにちは</p>
         </div>
         <Image
           className="dark:invert"
