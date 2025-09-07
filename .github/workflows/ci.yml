@@ -21,8 +21,10 @@ jobs:
         with:
           node-version: 22
 
-      # - name: Install dependencies
-      #   run: npm ci
+      - name: Install dependencies
+        run: npm ci
+        working-directory: src
 
-      # - name: Run tests
-      #   run: npm test
+      - name: Run tests
+        run: npm test
+        working-directory: src
