@@ -7,7 +7,7 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "test": "echo \"Test here\" && exit 0"
+    "test": "echo \"Write test here.\" && exit 0"
   },
   "dependencies": {
     "react": "19.1.0",
