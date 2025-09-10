@@ -9,11 +9,16 @@
 .main {
   /* コンテナ内のスタイル */
   padding: 2rem;
-  text-align: center; /* 内部のテキストを中央揃えにする場合 */
+  /* text-align: center; 内部のテキストを中央揃えにする場合 */
 }
 
 .title {
   /* H2タグの文字サイズを変更 */
   font-size: 3em;
   color: #333;
+}
+
+.list {
+  padding-right: 1em;
+  list-style-type: disc;
 }

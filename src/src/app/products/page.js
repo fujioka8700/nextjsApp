@@ -7,12 +7,16 @@ export default function ProductsList() {
         <div className={styles.container}>
             <main className={styles.main}>
                 <h2 className={styles.title}>商品一覧</h2>
-                <ul>
+                <ul className={styles.list}>
                     <li>
                         <Link href='/products/smartphone'>スマートフォン</Link>
                     </li>
-                    <li>商品B</li>
-                    <li>商品C</li>
+                    <li>
+                        <Link href='/products/pc'>パソコン</Link>
+                    </li>
+                    <li>
+                        <Link href='/products/headphone'>ヘッドフォン</Link>
+                    </li>
                 </ul>
             </main>
         </div>
