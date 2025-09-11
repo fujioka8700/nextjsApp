@@ -1,10 +1,26 @@
+import styles from '../page.module.css';
+import Link from 'next/link';
+
+async function getProducts({id }) {
+    const res = await fetch(`http://localhost:3000/${id}.json`);
+    const products = await res.json();
+
+    return products
+}
+
 const Product = async ({params}) => {
     const { id } = await params; // ここでURLからIDを取得
+    const product = await getProducts({id});
 
     return (
-        <div>
-            <h1>商品ID: {id}</h1>
-            <p>このページはID {id} の商品に関する情報です。</p>
+        <div className={styles.container}>
+            <main className={styles.main}>
+                <h1 className={styles.title}>商品ID: {product.id}</h1>
+                <img src={product.image} alt={product.name} width="300" height="400"/>
+                <p>{product.name}</p>
+                <br></br>
+                <Link href='/products'>商品一覧に戻る</Link>
+            </main>
         </div>
     );
 }
