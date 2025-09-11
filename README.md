@@ -18,7 +18,18 @@ $ docker compose run --rm app sh -c 'npm install'
 $ docker compose up -d
 ````
 
+起動したコンテナに入る<br>
+compose.yamlの command: sh -c "npm run dev" をコメントアウトしてから、
+```bash
+$ docker compose exec app bash
+````
+
 アプリ開発終了時
 ```bash
 $ docker compose down
+````
+
+本番環境で確認
+```bash
+$ npm start
 ````
