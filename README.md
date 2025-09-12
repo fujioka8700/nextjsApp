@@ -36,5 +36,7 @@ $ npm start
 
 ## .env.local
 ```bash
-NEXT_PUBLIC_API_URL=http://localhost:3000
+HOSTNAME=localhost
+PORT=3000
+HOST=http://$HOSTNAME:$PORT
 ```
