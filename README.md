@@ -33,3 +33,8 @@ $ docker compose down
 ```bash
 $ npm start
 ````
+
+## .env.local
+```bash
+NEXT_PUBLIC_API_URL=http://localhost:3000
+```

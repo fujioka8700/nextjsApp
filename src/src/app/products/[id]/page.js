@@ -1,8 +1,10 @@
 import styles from '../page.module.css';
 import Link from 'next/link';
 
+const HOST = process.env.HOST || 'http://localhost:3000';
+
 async function getProducts({id }) {
-    const res = await fetch(`http://localhost:3000/${id}.json`);
+    const res = await fetch(`${HOST}/${id}.json`);
     const products = await res.json();
 
     return products
