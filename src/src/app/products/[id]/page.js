@@ -1,8 +1,8 @@
-import styles from "../page.module.css";
-import Link from "next/link";
-import Image from "next/image";
+import styles from '../page.module.css';
+import Link from 'next/link';
+import Image from 'next/image';
 
-const HOST = process.env.HOST || "http://localhost:3000";
+const HOST = process.env.HOST || 'http://localhost:3000';
 
 async function getProducts({ id }) {
   const res = await fetch(`${HOST}/${id}.json`);
