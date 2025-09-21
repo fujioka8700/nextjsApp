@@ -7,7 +7,7 @@ import Link from 'next/link';
 type Player = 'black' | 'white';
 type CellState = Player | null;
 type BoardState = CellState[][];
-type Difficulty = 'easy' | 'normal' | 'hard';
+type Difficulty = 'easy' | 'normal' | 'hard' | 'very-hard';
 
 const BOARD_SIZE = 8;
 const PLAYER: Player = 'black';
@@ -161,6 +161,69 @@ const OthelloPage: React.FC = () => {
       return;
     }
 
+    const evaluateBoard = (b: BoardState): number => {
+      let score = 0;
+      for (let r = 0; r < BOARD_SIZE; r++) {
+        for (let c = 0; c < BOARD_SIZE; c++) {
+          if (b[r][c] === COMPUTER) {
+            score += positionalValue[r][c];
+          } else if (b[r][c] === PLAYER) {
+            score -= positionalValue[r][c];
+          }
+        }
+      }
+      return score;
+    };
+
+    const minimax = (
+      b: BoardState,
+      depth: number,
+      alpha: number,
+      beta: number,
+      maximizingPlayer: boolean,
+    ): number => {
+      const currentPlayer = maximizingPlayer ? COMPUTER : PLAYER;
+      const moves = getValidMoves(currentPlayer, b);
+
+      if (depth === 0 || moves.length === 0) {
+        return evaluateBoard(b);
+      }
+
+      if (maximizingPlayer) {
+        let maxEval = -Infinity;
+        for (const move of moves) {
+          const newBoard = b.map((row) => [...row]);
+          const flips = getFlips(move[0], move[1], currentPlayer, newBoard);
+          newBoard[move[0]][move[1]] = currentPlayer;
+          flips.forEach(([fr, fc]) => {
+            newBoard[fr][fc] = currentPlayer;
+          });
+
+          const evalScore = minimax(newBoard, depth - 1, alpha, beta, false);
+          maxEval = Math.max(maxEval, evalScore);
+          alpha = Math.max(alpha, evalScore);
+          if (beta <= alpha) break;
+        }
+        return maxEval;
+      } else {
+        let minEval = Infinity;
+        for (const move of moves) {
+          const newBoard = b.map((row) => [...row]);
+          const flips = getFlips(move[0], move[1], currentPlayer, newBoard);
+          newBoard[move[0]][move[1]] = currentPlayer;
+          flips.forEach(([fr, fc]) => {
+            newBoard[fr][fc] = currentPlayer;
+          });
+
+          const evalScore = minimax(newBoard, depth - 1, alpha, beta, true);
+          minEval = Math.min(minEval, evalScore);
+          beta = Math.min(beta, evalScore);
+          if (beta <= alpha) break;
+        }
+        return minEval;
+      }
+    };
+
     let bestMove: number[];
     if (difficulty === 'easy') {
       bestMove = validMoves[Math.floor(Math.random() * validMoves.length)];
@@ -172,6 +235,31 @@ const OthelloPage: React.FC = () => {
         },
         { move: validMoves[0], flips: 0 },
       ).move;
+    } else if (difficulty === 'very-hard') {
+      let bestScore = -Infinity;
+      bestMove = validMoves[0];
+      const searchDepth = 3; // 探索の深さ
+
+      for (const move of validMoves) {
+        const newBoard = board.map((row) => [...row]);
+        const flips = getFlips(move[0], move[1], COMPUTER, newBoard);
+        newBoard[move[0]][move[1]] = COMPUTER;
+        flips.forEach(([fr, fc]) => {
+          newBoard[fr][fc] = COMPUTER;
+        });
+
+        const score = minimax(
+          newBoard,
+          searchDepth,
+          -Infinity,
+          Infinity,
+          false,
+        );
+        if (score > bestScore) {
+          bestScore = score;
+          bestMove = move;
+        }
+      }
     } else {
       // hard
       bestMove = validMoves.reduce(
@@ -253,6 +341,12 @@ const OthelloPage: React.FC = () => {
             onClick={() => startGame('hard')}
           >
             強い
+          </button>
+          <button
+            className={styles.difficultyBtn}
+            onClick={() => startGame('very-hard')}
+          >
+            めっちゃ強い
           </button>
         </div>
         <div style={{ marginTop: '20px', textAlign: 'center' }}>
