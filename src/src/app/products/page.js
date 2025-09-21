@@ -17,6 +17,9 @@ export default function ProductsList() {
           <li>
             <Link href="/products/headphone">ヘッドフォン</Link>
           </li>
+          <li>
+            <Link href="/">TOPへ</Link>
+          </li>
         </ul>
       </main>
     </div>
