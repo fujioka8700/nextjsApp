@@ -1,0 +1,116 @@
+/* Othello.module.css */
+.container {
+    font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #E0F7FA; /* 基調の水色 */
+    color: #006064;
+    padding: 20px;
+}
+
+.difficultySelection {
+    text-align: center;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+}
+
+.difficultySelection h2 {
+    margin-bottom: 20px;
+}
+
+.difficultyBtn, .resetButton {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    margin: 0 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    color: #00838F;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.difficultyBtn:hover, .resetButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    background-color: #FFFDE7;
+}
+
+.gameContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gameContainer h1 {
+    margin-bottom: 10px;
+    color: #004D40;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.7);
+}
+
+.gameInfo {
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.gameBoard {
+    display: grid;
+    grid-template-columns: repeat(8, 45px);
+    grid-template-rows: repeat(8, 45px);
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    background-color: #4DD0E1; /* ボードの色 */
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.cell {
+    width: 45px;
+    height: 45px;
+    border: 1px dotted #B2EBF2; /* かわいく点線に */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.disc {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3) inset, 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.black { background-color: #424242; } /* 少し柔らかい黒 */
+.white { background-color: #F5F5F5; } /* 少し柔らかい白 */
+
+.validMove::after {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5); /* ハイライトを白っぽく */
+}
+
+.status {
+    margin-top: 15px;
+    font-size: 1.2em;
+    height: 30px;
+    font-weight: bold;
+    color: #00796B;
+}
+
+.resetButton {
+    margin-top: 10px;
+}

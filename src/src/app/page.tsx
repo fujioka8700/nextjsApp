@@ -70,6 +70,9 @@ export default function Home() {
                 <li>
                   <Link href="./othercount/2">カウントアップ２</Link>
                 </li>
+                <li>
+                  <Link href="./osero">オセロゲーム</Link>
+                </li>
               </ul>
             </div>
             <button className="primary-btn">問い合わせ</button>
