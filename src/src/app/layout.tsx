@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'change dark mode',
-  description: 'ダークモード切り替え',
+  title: 'Hiroshiのポートフォリオ',
+  description: 'Hiroshiのポートフォリオサイトです。',
 };
 
 export default function RootLayout({

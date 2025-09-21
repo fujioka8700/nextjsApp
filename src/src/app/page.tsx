@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import styles from './styles/toggle.module.css';
 
 export default function Home() {
@@ -58,6 +59,19 @@ export default function Home() {
               Web開発を中心に、新しい技術を学ぶのが好きです。家でも外でも、コードを書くことが最高の楽しみです。
               色々な視点から物事を捉え、常に新しい挑戦を続けています。
             </p>
+            <div>
+              <ul>
+                <li>
+                  <Link href="./products">商品一覧</Link>
+                </li>
+                <li>
+                  <Link href="./count/1">カウントアップ１</Link>
+                </li>
+                <li>
+                  <Link href="./othercount/2">カウントアップ２</Link>
+                </li>
+              </ul>
+            </div>
             <button className="primary-btn">問い合わせ</button>
           </div>
         </section>
